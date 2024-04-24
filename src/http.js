@@ -10,7 +10,7 @@ export async function fetchAvailableMeals() {
 
 export async function updateUserMeals(meals) {
   const response = await fetch("http://localhost:3000/orders", {
-    method: "PUT",
+    method: "POST",
     body: JSON.stringify({ meals }),
     headers: {
       "Content-Type": "application/json",

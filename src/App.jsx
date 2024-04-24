@@ -20,12 +20,19 @@ function App() {
       }
       return [selectedMeal, ...prevPickedMeals];
     });
-    console.log(userMeals);
+    // try {
+    //   await updateUserMeals([selectedMeal, ...userMeals]);
+    // } catch (error) {
+    //   setUserMeals(userMeals);
+    //   setErrorUpdatingMeals({
+    //     message: error.message || "Failed to update meals.",
+    //   });
+    // }
   }
 
   return (
     <>
-      <Header />
+      <Header cartData={userMeals} />
       <Menu onSelectFood={handleSelectMeals} />
     </>
   );
