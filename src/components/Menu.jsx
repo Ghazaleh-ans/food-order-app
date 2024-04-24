@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Foods from "./Foods";
-import { fetchAvailableFoods } from "../http";
+import { fetchAvailableMeals } from "../http";
 
 export default function Menu({ onSelectFood }) {
   const [isFetching, setIsFetching] = useState(false);
@@ -11,7 +11,7 @@ export default function Menu({ onSelectFood }) {
     setIsFetching(true);
     async function fetchFoods() {
       try {
-        const foods = await fetchAvailableFoods();
+        const foods = await fetchAvailableMeals();
         setAvailableMeals(foods);
         setIsFetching(false);
       } catch (error) {

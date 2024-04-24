@@ -22,7 +22,7 @@ export default function Foods({
               <p>{food.description}</p>
             </div>
             <div className="meal-item-actions">
-              <button onClick={onSelectFood} className="button">
+              <button onClick={() => onSelectFood(food)} className="button">
                 Add to Card
               </button>
             </div>
