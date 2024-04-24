@@ -1,9 +1,32 @@
+import { useState, useEffect } from "react";
+import Header from "./components/Header";
+import Menu from "./components/Menu";
+import { updateUserMeals } from "./http";
+
 function App() {
+  const [isFetching, setIsFetching] = useState(false);
+  const [userMeals, setUserMeals] = useState([]);
+  const [error, setError] = useState();
+
+  const [erroeUpdatingMeals, setErrorUpdatingMeals] = useState();
+
+  async function handleSelectMeals(selectedMeal) {
+    setUserMeals((prevPickedMeals) => {
+      if (!prevPickedMeals) {
+        prevPickedMeals = [];
+      }
+      if (prevPickedMeals.some((meal) => meal.id === selectedMeal.id)) {
+        return prevPickedMeals;
+      }
+      return [selectedMeal, ...prevPickedMeals];
+    });
+    console.log(userMeals);
+  }
+
   return (
     <>
-      <h1>You got this 💪</h1>
-      <p>Stuck? Not sure how to proceed?</p>
-      <p>Don't worry - we've all been there. Let's build it together!</p>
+      <Header />
+      <Menu onSelectFood={handleSelectMeals} />
     </>
   );
 }
